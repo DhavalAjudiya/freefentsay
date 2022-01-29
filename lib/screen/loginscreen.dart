@@ -64,21 +64,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       autofocus: true,
                       inputFormatters: [LengthLimitingTextInputFormatter(10)],
                       decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 20),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        hintText: "Enter mobile number",
+                        labelText: "Mobile Number",
+                        prefix: const Text(
+                          "+91",
+                          style: TextStyle(
+                            color: Colors.black,
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          hintText: "Enter mobile number",
-                          labelText: "Mobile Number",
-                          prefix: const Text(
-                            "+91",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          labelStyle: const TextStyle(color: Colors.black)),
+                        ),
+                        labelStyle: const TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
                       controller: phone,
                       textInputAction: TextInputAction.next,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -219,7 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                           },
                           child: Container(
-                            height: size.height * 0.05,
+                            height: size.height * 0.052,
                             width: size.width * 0.45,
                             decoration: BoxDecoration(
                               border: Border.all(
@@ -254,7 +259,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                           },
                           child: Container(
-                            height: size.height * 0.05,
+                            height: size.height * 0.052,
                             width: size.width * 0.45,
                             decoration: BoxDecoration(
                               border: Border.all(
@@ -288,7 +293,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 20,
                     ),
                     Container(
-                      height: size.height * 0.05,
+                      height: size.height * 0.052,
                       width: size.width * 1,
                       decoration: BoxDecoration(
                         border: Border.all(
