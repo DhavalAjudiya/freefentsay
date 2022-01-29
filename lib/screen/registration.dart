@@ -47,8 +47,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   color: Colors.white,
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
               Container(
-                height: size.height * 0.05,
+                height: size.height * 0.052,
                 width: size.width * 1,
                 alignment: Alignment.center,
                 margin: EdgeInsets.all(25),
@@ -73,7 +76,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ));
                 },
                 child: Container(
-                  height: size.height * 0.05,
+                  height: size.height * 0.052,
                   width: size.width * 1,
                   alignment: Alignment.center,
                   margin: EdgeInsets.all(25),
