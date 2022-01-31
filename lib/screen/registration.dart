@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freefentasy/screen/loginscreen.dart';
+import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class RegistrationPage extends StatefulWidget {
@@ -69,11 +70,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return const LoginScreen();
-                    },
-                  ));
+                  Get.to(
+                    const LoginScreen(),
+                  );
                 },
                 child: Container(
                   height: size.height * 0.052,

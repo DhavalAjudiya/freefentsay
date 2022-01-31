@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:freefentasy/screen/register.dart';
-import 'package:freefentasy/screen/resetpassword.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:flutter/services.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterState extends State<Register> {
   bool loding = false;
   bool isloding = false;
 
   final formkey = GlobalKey<FormState>();
   final phone = TextEditingController();
+  final email = TextEditingController();
+  final code = TextEditingController();
   final pass = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -55,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(
-                height: 70,
+                height: 40,
               ),
               Form(
                 key: formkey,
@@ -106,7 +105,45 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 18,
+                    ),
+                    TextFormField(
+                      obscureText: loding ? true : false,
+                      decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: "Enter Email Address",
+                          labelText: "Email Address",
+                          labelStyle: const TextStyle(color: Colors.black)),
+                      controller: email,
+                      textInputAction: TextInputAction.next,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (email) {
+                        if (email!.isEmpty) {
+                          return "required";
+                        }
+                        // else if (email.isNotEmpty ||
+                        //     RegExp(r'^[^<>()[\]\\,;:\%#^\s@\"$&!@]+@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z0-9]+\.)+[a-zA-Z]{2,}))$')
+                        //         .hasMatch(email)) {
+                        //   return "Enter valid email";
+                        // }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 18,
                     ),
                     TextFormField(
                       obscureText: loding ? true : false,
@@ -151,7 +188,41 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 18,
+                    ),
+                    TextFormField(
+                      obscureText: loding ? true : false,
+                      decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: "Enter Invitecode",
+                          labelText: "Enater Invitecode",
+                          labelStyle: const TextStyle(color: Colors.black)),
+                      controller: code,
+                      keyboardType: TextInputType.phone,
+                      textInputAction: TextInputAction.done,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (code) {
+                        if (code!.isEmpty) {
+                          return "required";
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 25,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -166,7 +237,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Text(
-                          "LOGIN",
+                          "REGISTER",
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -178,28 +249,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 5,
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Get.to(
-                          const ResetPassword(),
-                        );
-                      },
-                      child: const Text(
-                        "Forget Password ?",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color(0XFFAB110E),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "Not a member?",
+                          "Already a member?",
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,
@@ -207,13 +261,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {
-                            Get.to(
-                              const Register(),
-                            );
-                          },
+                          onPressed: () {},
                           child: const Text(
-                            "  Register",
+                            "  Login",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -223,9 +273,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
                     const Text(
                       "or",
                       style: TextStyle(
@@ -235,7 +285,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
