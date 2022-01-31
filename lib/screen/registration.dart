@@ -62,7 +62,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 child: const Text(
                   "Register",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
