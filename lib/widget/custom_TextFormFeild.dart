@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
   final String hinttext;
@@ -7,7 +8,9 @@ class CustomTextFormFiled extends StatelessWidget {
   final bool obscureText;
   final Widget? suffixIcon;
   final Widget? prefix;
+  List<TextInputFormatter>? inputFormatters;
   String? Function(String?)? validator;
+  final TextInputType? keyboardType;
 
   CustomTextFormFiled({
     required this.hinttext,
@@ -17,14 +20,18 @@ class CustomTextFormFiled extends StatelessWidget {
     this.suffixIcon,
     this.prefix,
     this.validator,
+    this.keyboardType,
+    this.inputFormatters,
   });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        inputFormatters: inputFormatters,
+        keyboardType: keyboardType,
         obscureText: obscureText,
         decoration: InputDecoration(
             contentPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
             ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:freefentasy/screen/loginscreen.dart';
+import 'package:freefentasy/screen/register.dart';
+import 'package:freefentasy/widget/custom_container.dart';
+import 'package:freefentasy/widget/custom_style.dart';
 import 'package:get/get.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:sizer/sizer.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -16,86 +19,99 @@ class _RegistrationPageState extends State<RegistrationPage> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
+        // width: double.infinity,
+        // height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/img/bg.png"), fit: BoxFit.cover),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 500),
+          padding: const EdgeInsets.only(top: 450),
           child: Column(
             children: [
-              const Text(
-                "Fantasy Cricket",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold),
+              _header(),
+              SizedBox(
+                height: 4.h,
               ),
-              const SizedBox(
-                height: 20,
+              _text(),
+              _subtext(),
+              SizedBox(
+                height: 5.h,
               ),
-              const Text(
-                "Choose the best 11 players and create a team",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
+              _Register(),
+              SizedBox(
+                height: 5.h,
               ),
-              const Text(
-                "best team win",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                height: size.height * 0.052,
-                width: size.width * 1,
-                alignment: Alignment.center,
-                margin: EdgeInsets.all(25),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Text(
-                  "Register",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(
-                    const LoginScreen(),
-                  );
-                },
-                child: Container(
-                  height: size.height * 0.052,
-                  width: size.width * 1,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.all(25),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white, width: 0),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ),
+              _loofin(),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _header() {
+    return CustomTextStyle(
+      title: 'Fantasy Cricket',
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 28.sp,
+    );
+  }
+
+  Widget _text() {
+    return CustomTextStyle(
+      title: "Choose the best 11 players and create a team",
+      color: Colors.white,
+    );
+  }
+
+  Widget _subtext() {
+    return CustomTextStyle(
+      title: "best team win",
+      color: Colors.white,
+    );
+  }
+
+  Widget _Register() {
+    return CustomContainer(
+      onTap: () {
+        Get.to(
+          Register(),
+        );
+      },
+      width: double.infinity,
+      height: 5.2.h,
+      color: Colors.white,
+      alignment: Alignment.center,
+      margin: EdgeInsets.symmetric(horizontal: 20.sp),
+      child: CustomTextStyle(
+        title: "Register",
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w700,
+      ),
+    );
+  }
+
+  Widget _loofin() {
+    return CustomContainer(
+      onTap: () {
+        Get.to(
+          LoginScreen(),
+        );
+      },
+      width: double.infinity,
+      height: 5.2.h,
+      alignment: Alignment.center,
+      border: Border.all(
+        color: Colors.white,
+      ),
+      margin: EdgeInsets.symmetric(horizontal: 20.sp),
+      child: CustomTextStyle(
+        title: "Login",
+        fontSize: 18.sp,
+        color: Colors.white,
+        fontWeight: FontWeight.w700,
       ),
     );
   }

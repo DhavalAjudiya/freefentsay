@@ -20,7 +20,7 @@ class CustomIconButton extends StatelessWidget {
       onPressed: onPressed,
       iconSize: iconSize,
       icon: Icon(
-        Icons.arrow_back,
+        icon,
         color: color,
       ),
     );

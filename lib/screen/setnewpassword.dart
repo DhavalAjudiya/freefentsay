@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:freefentasy/screen/register.dart';
 import 'package:freefentasy/widget/custom_TextFormFeild.dart';
 import 'package:freefentasy/widget/custom_gesturedetector.dart';
 import 'package:freefentasy/widget/custom_iconbutton.dart';
 import 'package:freefentasy/widget/custom_style.dart';
+import 'package:freefentasy/widget/customtextbutton.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
@@ -18,43 +20,49 @@ class _SetNewpasswordState extends State<SetNewpassword> {
   bool _isselect = false;
   final _passworwdcontroller = TextEditingController();
   final _confirmpasswordcontroller = TextEditingController();
+  final formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
-      body: Column(
-        children: [
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 30,
-                  right: 12,
-                  left: 12,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _backicon(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    _headertext(),
-                    SizedBox(height: 20.h),
-                    _password(),
-                    const SizedBox(height: 20),
-                    _confirmpassword(),
-                    const SizedBox(height: 20),
-                    _button(),
-                    const SizedBox(height: 20),
-                    _Row(),
-                  ],
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 30,
+                right: 12,
+                left: 12,
               ),
-            ],
-          ),
-        ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _backicon(),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  _headertext(),
+                  SizedBox(height: 10.h),
+                  Form(
+                    key: formkey,
+                    child: Column(
+                      children: [
+                        _password(),
+                        SizedBox(height: 3.h),
+                        _confirmpassword(),
+                        SizedBox(height: 5.h),
+                        _button(),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 2.h),
+                  _Row(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -73,7 +81,7 @@ class _SetNewpasswordState extends State<SetNewpassword> {
     return Center(
       child: CustomTextStyle(
         title: "Set New Password",
-        fontSize: 32,
+        fontSize: 32.sp,
         fontWeight: FontWeight.w700,
       ),
     );
@@ -91,15 +99,13 @@ class _SetNewpasswordState extends State<SetNewpassword> {
         }
         return null;
       },
-      suffixIcon: IconButton(
+      suffixIcon: CustomIconButton(
         onPressed: () {
           setState(() {
             _islonding = !_islonding;
           });
         },
-        icon: Icon(
-          _islonding == false ? Icons.visibility : Icons.visibility_off,
-        ),
+        icon: _islonding == false ? Icons.visibility : Icons.visibility_off,
       ),
     );
   }
@@ -110,15 +116,13 @@ class _SetNewpasswordState extends State<SetNewpassword> {
       labletext: "Confirm Password",
       controller: _confirmpasswordcontroller,
       obscureText: _isselect,
-      suffixIcon: IconButton(
+      suffixIcon: CustomIconButton(
         onPressed: () {
           setState(() {
             _isselect = !_isselect;
           });
         },
-        icon: Icon(
-          _isselect == false ? Icons.visibility : Icons.visibility_off,
-        ),
+        icon: _isselect == false ? Icons.visibility : Icons.visibility_off,
       ),
       validator: (_confirmpasswordcontroller) {
         if (_confirmpasswordcontroller != _passworwdcontroller.text) {
@@ -136,7 +140,11 @@ class _SetNewpasswordState extends State<SetNewpassword> {
         fontSize: 17,
         fontWeight: FontWeight.w600,
       ),
-      onTap: () {},
+      onTap: () {
+        if (formkey.currentState!.validate()) {
+          print('Confirm');
+        }
+      },
     );
   }
 
@@ -149,11 +157,18 @@ class _SetNewpasswordState extends State<SetNewpassword> {
           fontWeight: FontWeight.w400,
           fontSize: 16,
         ),
-        CustomTextStyle(
-          title: " Register",
-          color: Colors.red,
-          fontWeight: FontWeight.w400,
-          fontSize: 16,
+        CustomTextButton(
+          onPressed: () {
+            Get.to(
+              Register(),
+            );
+          },
+          child: CustomTextStyle(
+            title: " Register",
+            color: Color(0XFFAB110E),
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+          ),
         ),
       ],
     );

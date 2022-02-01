@@ -4,6 +4,7 @@ class CustomTextStyle extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final Color? color;
+
   final String title;
 
   CustomTextStyle({
