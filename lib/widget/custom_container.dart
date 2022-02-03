@@ -9,6 +9,7 @@ class CustomContainer extends StatelessWidget {
   final DecorationImage? image;
   final EdgeInsetsGeometry? margin;
   final AlignmentGeometry? alignment;
+  final Gradient? gradient;
 
   final BoxBorder? border;
 
@@ -22,6 +23,7 @@ class CustomContainer extends StatelessWidget {
     this.alignment,
     this.margin,
     this.onTap,
+    this.gradient,
   });
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class CustomContainer extends StatelessWidget {
         child: child,
         margin: margin,
         decoration: BoxDecoration(
+          gradient: gradient,
           color: color,
           borderRadius: BorderRadius.circular(10),
           image: image,

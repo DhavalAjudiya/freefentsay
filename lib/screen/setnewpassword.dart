@@ -100,12 +100,14 @@ class _SetNewpasswordState extends State<SetNewpassword> {
         return null;
       },
       suffixIcon: CustomIconButton(
+        iconSize: 20,
         onPressed: () {
           setState(() {
             _islonding = !_islonding;
           });
         },
         icon: _islonding == false ? Icons.visibility : Icons.visibility_off,
+        color: _islonding == false ? Colors.black : Colors.grey,
       ),
     );
   }
@@ -117,12 +119,14 @@ class _SetNewpasswordState extends State<SetNewpassword> {
       controller: _confirmpasswordcontroller,
       obscureText: _isselect,
       suffixIcon: CustomIconButton(
+        iconSize: 20,
         onPressed: () {
           setState(() {
             _isselect = !_isselect;
           });
         },
         icon: _isselect == false ? Icons.visibility : Icons.visibility_off,
+        color: _isselect == false ? Colors.black : Colors.grey,
       ),
       validator: (_confirmpasswordcontroller) {
         if (_confirmpasswordcontroller != _passworwdcontroller.text) {

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class CustomIconButton extends StatelessWidget {
   final VoidCallback? onPressed;
-  final IconData icon;
+  final IconData? icon;
   final Color? color;
   final double iconSize;
 
@@ -11,7 +11,7 @@ class CustomIconButton extends StatelessWidget {
     required this.onPressed,
     this.color,
     this.iconSize = 30,
-    required this.icon,
+    this.icon,
   });
 
   @override

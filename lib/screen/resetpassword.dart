@@ -25,41 +25,39 @@ class _ResetPasswordState extends State<ResetPassword> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 30, right: 12, left: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _backicon(),
-                SizedBox(
-                  height: 5.h,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30, right: 12, left: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _backicon(),
+              SizedBox(
+                height: 5.h,
+              ),
+              _headertext(),
+              SizedBox(
+                height: 8.h,
+              ),
+              Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    _mobilenumbertextfield(),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    _sendotpbutton(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    _textwidget(),
+                  ],
                 ),
-                _headertext(),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Form(
-                  key: formkey,
-                  child: Column(
-                    children: [
-                      _mobilenumbertextfield(),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      _sendotpbutton(),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      _textwidget(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

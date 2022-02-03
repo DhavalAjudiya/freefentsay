@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freefentasy/screen/register.dart';
 import 'package:freefentasy/screen/resetpassword.dart';
+import 'package:freefentasy/widget/bottomnavigationbar.dart';
 import 'package:freefentasy/widget/custom_TextFormFeild.dart';
 import 'package:freefentasy/widget/custom_container.dart';
 import 'package:freefentasy/widget/custom_gesturedetector.dart';
@@ -142,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget buildCustomGestureDetector() {
     return CustomGestureDetector(
       child: CustomTextStyle(
-        title: "CONFIRM",
+        title: "LOGIN",
         color: Colors.white,
         fontSize: 17,
         fontWeight: FontWeight.w600,
@@ -150,6 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: () {
         if (formkey.currentState!.validate()) {
           print('Confirm');
+          Get.to(BottomNavigation());
         }
       },
     );
@@ -213,13 +215,14 @@ class _LoginScreenState extends State<LoginScreen> {
         return null;
       },
       suffixIcon: CustomIconButton(
+        iconSize: 20,
         onPressed: () {
           setState(() {
             _loding = !_loding;
           });
         },
         icon: _loding == false ? Icons.visibility : Icons.visibility_off,
-        color: Colors.black,
+        color: _loding == false ? Colors.black : Colors.grey,
       ),
     );
   }

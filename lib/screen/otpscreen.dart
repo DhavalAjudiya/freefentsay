@@ -22,61 +22,63 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 30, right: 12, left: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _backicon(),
-                SizedBox(
-                  height: 5.h,
-                ),
-                _headertext(),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Center(
-                  child: _text(),
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                Center(
-                  child: OTPTextField(
-                      controller: otpController,
-                      length: 6,
-                      width: 80.w,
-                      fieldWidth: 40,
-                      fieldStyle: FieldStyle.underline,
-                      style: TextStyle(fontSize: 17),
-                      onChanged: (pin) {
-                        print("Changed: " + pin);
-                      },
-                      onCompleted: (pin) {
-                        print("Completed: " + pin);
-                        Get.to(
-                          const SetNewpassword(),
-                        );
-                      }),
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                const Center(
-                  child: Text("Did't receive the otp?"),
-                ),
-                SizedBox(
-                  height: 3.h,
-                ),
-                Center(
-                  child: _resendotp(),
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30, right: 12, left: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _backicon(),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  _headertext(),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Center(
+                    child: _text(),
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Center(
+                    child: OTPTextField(
+                        controller: otpController,
+                        length: 6,
+                        width: 80.w,
+                        fieldWidth: 40,
+                        fieldStyle: FieldStyle.underline,
+                        style: TextStyle(fontSize: 17),
+                        onChanged: (pin) {
+                          print("Changed: " + pin);
+                        },
+                        onCompleted: (pin) {
+                          print("Completed: " + pin);
+                          Get.to(
+                            const SetNewpassword(),
+                          );
+                        }),
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  const Center(
+                    child: Text("Did't receive the otp?"),
+                  ),
+                  SizedBox(
+                    height: 3.h,
+                  ),
+                  Center(
+                    child: _resendotp(),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
