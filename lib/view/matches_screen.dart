@@ -104,7 +104,7 @@ class _MatchsScreenState extends State<MatchsScreen>
   }
 
   Widget _live() {
-    return CustomContainer(
+    return ContainerFixCustom(
       data: "Afghanistan vs Zimbabwe",
       title: "AFG",
       backgroundImage: const AssetImage("assets/img/afg.png"),
@@ -116,7 +116,7 @@ class _MatchsScreenState extends State<MatchsScreen>
   }
 
   Widget _upcoming() {
-    return CustomContainer(
+    return ContainerFixCustom(
       data: "Afghanistan vs Zimbabwe",
       title: "AFG",
       backgroundImage: const AssetImage("assets/img/afg.png"),
@@ -128,7 +128,7 @@ class _MatchsScreenState extends State<MatchsScreen>
   }
 
   Widget _complete() {
-    return CustomContainer(
+    return ContainerFixCustom(
       data: "Afghanistan vs Zimbabwe",
       title: "AFG",
       backgroundImage: const AssetImage("assets/img/afg.png"),

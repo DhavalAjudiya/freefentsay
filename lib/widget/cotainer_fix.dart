@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:velocity_x/src/flutter/padding.dart';
 
-class CustomContainer extends StatelessWidget {
+class ContainerFixCustom extends StatelessWidget {
   final String data;
   final String title;
   final String continertitle;
@@ -16,7 +15,7 @@ class CustomContainer extends StatelessWidget {
   final ImageProvider? backgroundImage;
   final ImageProvider? backgroundImg;
 
-  CustomContainer({
+  ContainerFixCustom({
     this.data = "",
     this.title = "",
     this.text = "",

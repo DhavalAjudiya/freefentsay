@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freefentasy/view/coine_screen.dart';
-import 'package:freefentasy/view/man%20_screen.dart';
+import 'package:freefentasy/view/main%20_screen.dart';
 import 'package:freefentasy/view/matches_screen.dart';
 import 'package:freefentasy/view/setting_screen.dart';
 import 'package:freefentasy/view/winner_screen.dart';
@@ -28,7 +28,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return Scaffold(
       body: page[isloding],
       bottomNavigationBar: Container(
-        height: 9.8.h,
+        height: 12.3.h,
         child: BottomNavigationBar(
           showUnselectedLabels: true,
           currentIndex: isloding,
@@ -50,7 +50,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 icon: Image.asset(
                   "assets/img/h.png",
                   color: isloding == 0 ? Color(0xffAB110E) : Colors.black,
-                  height: 3.h,
+                  height: 5.w,
                 ),
               ),
               label: "Home",
@@ -65,7 +65,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 icon: Image.asset(
                   "assets/img/trophi.png",
                   color: isloding == 1 ? Color(0xffAB110E) : Colors.black,
-                  height: 3.h,
+                  height: 5.w,
                 ),
               ),
               label: "Matches",
@@ -80,7 +80,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 icon: Image.asset(
                   "assets/img/w.png",
                   color: isloding == 2 ? Color(0xffAB110E) : Colors.black,
-                  height: 3.h,
+                  height: 5.w,
                 ),
               ),
               label: "Winners",
@@ -93,9 +93,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   });
                 },
                 icon: Image.asset(
-                  "assets/img/c.png",
+                  "assets/img/C.png",
                   color: isloding == 3 ? Color(0xffAB110E) : Colors.black,
-                  height: 3.h,
+                  height: 5.w,
                 ),
               ),
               label: "Coins",
@@ -110,7 +110,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 icon: Image.asset(
                   "assets/img/seting.png",
                   color: isloding == 4 ? Color(0xffAB110E) : Colors.black,
-                  height: 3.h,
+                  height: 5.w,
                 ),
               ),
               label: "Settings",

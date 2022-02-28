@@ -1,9 +1,13 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:freefentasy/view/contantscreen.dart';
+import 'package:freefentasy/view/setting_screen.dart';
 import 'package:freefentasy/widget/cotainer_fix.dart';
 
 import 'package:freefentasy/widget/custom_iconbutton.dart';
 import 'package:freefentasy/widget/custom_style.dart';
 import 'package:freefentasy/widget/customappbar.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -24,58 +28,71 @@ class _MainScreenState extends State<MainScreen> {
           title: 'Free Fantasy',
           leading: CustomIconButton(
             icon: Icons.person,
-            onPressed: () {},
+            onPressed: () {
+              Get.to(
+                const SettingScreen(),
+              );
+            },
           ),
         ),
       ),
       backgroundColor: Color(0xffE5E5E5),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              overflow: Overflow.visible,
-              children: [
-                _container(),
-                Positioned(
-                  top: 4.h,
-                  left: 3.w,
-                  right: 3.w,
-                  child: _Container(),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 6.h,
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 4,
+      body: Stack(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _container(),
+              SizedBox(
+                height: 5.h,
               ),
-              height: 7.h,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage("assets/img/ad.png"),
+              CarouselSlider(
+                items: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/img/ad.png"),
+                      ),
+                    ),
+                  ),
+                ],
+                options: CarouselOptions(
+                  height: 80,
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  viewportFraction: 0.8,
+                  aspectRatio: 2.2,
                 ),
               ),
-            ),
-            SizedBox(
-              height: 4.h,
-            ),
-            _text(),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 15),
-              height: 45.9.h,
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  return _listviewContainer();
-                },
+              _text().p4(),
+              Expanded(
+                child: SizedBox(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: ListView.builder(
+                      itemBuilder: (BuildContext context, int index) {
+                        return _listviewContainer();
+                      },
+                    ),
+                  ),
+                ),
               ),
+            ],
+          ),
+          Positioned(
+            top: 4.5.h,
+            left: 5.w,
+            right: 3.w,
+            child: InkWell(
+              onTap: () {
+                Get.to(
+                  ContestsScreen(),
+                );
+              },
+              child: _Container(),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -117,7 +134,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget _Container() {
-    return CustomContainer(
+    return ContainerFixCustom(
       data: "Afghanistan vs Zimbabwe",
       title: "AFG",
       backgroundImage: const AssetImage("assets/img/afg.png"),
@@ -137,7 +154,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget _listviewContainer() {
-    return CustomContainer(
+    return ContainerFixCustom(
       data: "India vs Englend - MCA Stadium",
       title: "IND",
       subtitle: "2H 12 M",
